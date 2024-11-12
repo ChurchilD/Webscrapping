@@ -1,0 +1,40 @@
+Step 1: Identify website of interest where we want to explore information.
+Step2 : Explore website and Inspect Web Page’s HTML
+Step 3 : Your web scraping goal and the target website determine what libraries will be installed or imported. Generally, you need to get the following tools to be ready:
+        Requests: allows you to send access requests to website easily
+        Beautiful Soup: pulls data out of HTML files
+        Pandas: handles extracted data (The alternatives include csv, json, or other libraries you prefer) 
+        Optional:        
+        Re: a Python’s standard library, can be used to check if a string contains the specified search pattern. 
+        Datetime:  a Python’s standard library, supplies classes for manipulating dates and time
+          Code Snippet to install :
+                  pip install beautifulsoup4
+                  pip install requests
+                  pip install pandas
+          Code Snippet of how we can import libraries:
+                  from bs4 import BeautifulSoup as soup
+                  import requests 
+                  import pandas as pd 
+                  import re
+                  import datetime
+
+STEP 4: Retrieve Website and Parse HTML
+      This step is extremely important but pretty easy to achieve; only a few lines of code are needed.
+        Code Snippet:
+                # Identify the target website's address, i.e., URL
+                books_url = 'https://books.toscrape.com/index.html'
+                # Create a response object to get the web page's HTML content
+                get_url = requests.get(books_url)
+                # Create a beautiful soup object to parse HTML text with the help of the html.parser
+                books_soup = soup(get_url.text, 'html.parser')
+                # Check website's response
+                print(get_url)
+                # Get some intuition by printing out HTML
+                # This step is not required to build a web scraper
+                print(get_url.text)
+                print(books_soup)
+                # Use prettify() method to make the HTML be nicely formatted
+                print(books_soup.prettify())   ## the prettify() method can be used to present the output nicely.
+
+STEP 5: Extract, Clean, and Store Data
+STEP 6: Save File with cleansed data.
